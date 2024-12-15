@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package chat;
+option go_package = "github.com/oriastanjung/personal-va/proto/chat";
+
+service ChatService {
+  // Bidirectional streaming RPC
+  rpc Chat(stream ChatMessage) returns (stream ChatMessage);
+}
+
+// Chat message structure
+message ChatMessage {
+  string role = 1;       // Role: "user" or "assistant"
+  string content = 2;    // The message content
+}
